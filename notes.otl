@@ -1,0 +1,84 @@
+[_] 0% 64-bit counter
+	[_] 0% Features
+		[_] 0% Firmware
+			[_] 0% Interrupts
+				[_] Timer0
+			[_] Internal Metrics
+				: The eeprom storage is the internal metric.
+		[_] 0% Hardware
+			[_] 0% Electronics
+				[_] 0% Power
+					[_] Capacitor backup
+						: To give PIC time to save current counter value to
+						: eeprom. Typical write time is 4ms, assume 40ms,
+						: writing can continue down to 2.0V, a change of -3V
+						: Current consumption of the PIC will be <2mA
+						:
+						: Vc = V0 * e^(-t/RC)
+						:
+						: See
+						: http://hyperphysics.phy-astr.gsu.edu/Hbase/electric/capdis.html#c2
+						: 
+						: A 100uF ceramic should be sufficient, and overkill,
+						: after 0.2s voltage finally goes to 2.24V Must be X7R
+						: due to aging issues. 587-1965-1-ND 100uF 10V 1210
+						:
+						: For isolation, put the PIC on a seperate 7805
+					[_] Schematic
+					[_] 0% PCB
+						[_] Placement
+							: MTA-156 connector on *front*
+				[_] 0% Master Oscillator
+					: X136-ND - 64mhz, full-sized can
+					:
+					: Two 74VHC393 counters, 16-bits in total
+					:
+					: 64mhz/256/256 = 976
+					:
+					: 1mhz/976hz = ~1024 instructions/per clock
+					:
+					: So hardwired counters are used for 16bits, the PIC
+					: handles the other 48bits. 
+				[_] 0% Microprocessor
+					: PIC16LF1320, note the LF! Want it to work down to 2.0V
+					: for power-off eeprom writes.
+					IO Pins used
+						PORTA
+					[_] 0% ICSP
+						: Spiral clock setup worked fine.
+						[_] Schematic
+						[_] 0% PCB
+							[_] Placed
+								: Would be nice to have 1.75"x0.5" of space
+								: clear so PICKit2 can fit.
+					[_] Oscillator
+						: External, fed from master osc 
+				[_] 0% LED Display
+					: Must watch capacitance on the least significant bits.
+					:
+					: Use 74HC595/ULN2803A combo for 
+				[_] 0% Test points
+					[_] Footprint
+					[_] 0% Schematic
+						[_] 0% Power
+							[_] GND
+							[_] V+
+							[_] 5V
+						[_] 0% PIC
+							[_] MCLR
+							[_] OSC
+					[_] 0% PCB
+						[_] Placed
+			[_] 0% Mechanical
+				[_] Overall
+					: 16"x2" 
+					: 
+					: Design for wall mounting.
+				[_] PCB Finish
+					: Black solder mask, supplier?
+				[_] Power jack location
+				[_] Mounting Holes
+					: Top left and right corners.
+					:
+					: Should provide for something aesthetic, like a SHCS or a
+					: magnet mount.
