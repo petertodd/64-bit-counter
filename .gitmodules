@@ -4,3 +4,6 @@
 [submodule "elec"]
 	path = elec
 	url = git://git.petertodd.org/64-bit-counter.elec.git
+[submodule "firm"]
+	path = firm
+	url = git://git.petertodd.org/64-bit-counter.firm.git
