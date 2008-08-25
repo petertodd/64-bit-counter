@@ -54,9 +54,17 @@
 					[_] Oscillator
 						: External, fed from master osc 
 				[_] 0% LED Display
+					: Little-endian! Makes the bits "march" left to right.
+					:
 					: Must watch capacitance on the least significant bits.
 					:
-					: Use 74HC595/ULN2803A combo for 
+					: LED: 64x SSB-LXA100SRW, two 1.7V in series, 40mcd at
+					: 20mA, 2.5mA seems sufficiently bright.
+					:
+					: Use SN74HC595D (296-8344-5-ND) can drive +-6mA. Could
+					: also use a FET, such as 2SK3018T106CT-ND, 13pF, 100mA,
+					: 2.5V on, this would be most important for the high
+					: frequency stuff.
 				[_] 0% Test points
 					[_] Footprint
 					[_] 0% Schematic
@@ -82,3 +90,5 @@
 					:
 					: Should provide for something aesthetic, like a SHCS or a
 					: magnet mount.
+					:
+					: Back mounted wire cage?
